@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 // Import routes
 const authRoute = require('./routes/auth');
 const exerciseRoute = require('./routes/exercises');
+const workoutsRoute = require('./routes/workouts');
 
 dotenv.config();
 
@@ -50,6 +51,7 @@ app.use(function (req, res, next) {
 // Route Middlewears
 app.use('/api/user', authRoute);
 app.use('/api/exercises', exerciseRoute);
+app.use('/api/workouts', workoutsRoute);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server running');
