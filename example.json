@@ -1,0 +1,19 @@
+{
+    "_id" : "507f191e810c19729de860ea",
+    "userId" : "507f191efrtg19729de860ea",
+    "name" : "Back & Biceps",
+    "exercises" : [
+        {
+            "exerciseName": "Pull-Ups"
+        },
+        {
+            "exerciseName": "EZ Bar Curls"
+        },
+        {
+            "exerciseName": "Dumbbell Hammer Curls"
+        },
+        {
+            "exerciseName": "Dumbbell Shrugs"
+        }
+    ]
+}
