@@ -33,9 +33,9 @@ router.delete('/delete-workout-template/:workoutId', async (req, res) => {
 
 // Get all users templates
 router.get('/get-workout-templates/:userId', async (req, res) => {
-    const allTemplates = await WorkoutTemplate.get(
+    const allTemplates = await WorkoutTemplate.find(
         {
-            _id: req.params.userId
+            userId: req.params.userId
         }
     );
     
