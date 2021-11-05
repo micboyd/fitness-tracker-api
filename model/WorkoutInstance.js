@@ -5,8 +5,32 @@ const workoutInstanceSchema = new mongoose.Schema({
         type: String,
     },
     date: {
-        type: Date
-    }
+        type: Date,
+        default: Date.now
+    },
+    workoutQuality: {
+        type: Number
+    },
+    exercises: [
+        {
+            exerciseName: {
+                type: String
+            },
+            sets: [
+                {
+                    setNumber: {
+                        type: Number
+                    },
+                    reps: {
+                        type: Number
+                    },
+                    weight: {
+                        type: Number
+                    }
+                }
+            ]
+        }
+    ]
 });
 
 module.exports = mongoose.model('WorkoutInstance', workoutInstanceSchema);

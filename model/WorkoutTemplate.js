@@ -7,9 +7,17 @@ const workoutTemplateSchema = new mongoose.Schema({
     name: {
         type: String
     },
-    exercises: {
-        type: [String]
-    }
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    exercises: [
+        {
+            exerciseName: {
+                type: String
+            }
+        }
+    ]
 });
 
 module.exports = mongoose.model('WorkoutTemplate', workoutTemplateSchema);
