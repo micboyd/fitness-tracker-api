@@ -34,9 +34,9 @@ router.delete('/delete-workout-instance/:workoutId', async (req, res) => {
 
 // Get all instances of a workout
 router.get('/get-workout-instances/:userId', async (req, res) => { 
-    const allTemplates = await WorkoutInstance.get(
+    const allTemplates = await WorkoutInstance.find(
         {
-            _id: req.params.userId
+            userId: req.params.userId
         }
     );
     
