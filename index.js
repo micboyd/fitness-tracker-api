@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    const allowedOrigins = ['http://localhost:4200', 'https://www.munrolocator.com'];
+    const allowedOrigins = ['http://localhost:4200', 'https://mb-fitness-tracker-api.herokuapp.com/'];
 
     const origin = req.headers.origin;
 
