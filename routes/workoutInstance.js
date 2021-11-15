@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const WorkoutInstance = require('../model/WorkoutInstance');
+const fns = require('date-fns');
 
 // Add an instance of a workout
 router.post('/add-workout-instance/', async (req, res) => { 
@@ -42,5 +43,42 @@ router.get('/get-workout-instances/:userId', async (req, res) => {
     
     return res.json(allTemplates);
 });
+
+// Get statistics
+router.get('/get-user-statistics/:userId', async (req, res) => { 
+    const allWorkouts = await WorkoutInstance.find(
+        {
+            userId: req.params.userId
+        }
+    );
+
+    const weekWorkouts = [];
+    const monthWorkouts = [];
+    const yearWorkouts = [];
+
+    allWorkouts.forEach((item) => {
+        if (fns.isThisWeek(item.date)) {
+            weekWorkouts.push(item.date);
+        }
+
+        if (fns.isThisMonth(item.date)) {
+            monthWorkouts.push(item.date);
+        }
+
+        if (fns.isThisYear(item.date)) {
+            yearWorkouts.push(item.date);
+        }
+    });
+
+    const stats = {
+        thisWeek: weekWorkouts.length,
+        thisMonth: monthWorkouts.length,
+        thisYear: yearWorkouts.length
+    };
+    
+    return res.json(stats);
+});
+
+
 
 module.exports = router;
