@@ -44,6 +44,18 @@ router.get('/get-workout-instances/:userId', async (req, res) => {
     return res.json(allTemplates);
 });
 
+router.get('/get-single-workout-instance/:workoutId', async (req, res) => { 
+    const singleWorkout = await WorkoutInstance.findOne(
+        {
+            _id: req.params.workoutId
+        }
+    );
+    
+    return res.json(singleWorkout);
+});
+
+
+
 // Get statistics
 router.get('/get-user-statistics/:userId', async (req, res) => { 
     const allWorkouts = await WorkoutInstance.find(
