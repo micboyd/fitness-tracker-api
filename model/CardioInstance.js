@@ -25,6 +25,9 @@ const cardioInstanceSchema = new mongoose.Schema({
     },
     distance: {
         type: String
+    },
+    caloriesBurned: {
+        type: Number
     }
 });
 
