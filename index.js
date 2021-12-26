@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const authRoute = require('./routes/auth');
 const workoutInstance = require('./routes/workoutInstance');
 const workoutTemplate = require('./routes/workoutTemplate');
+const cardioInstance = require('./routes/cardioInstance');
 
 dotenv.config();
 
@@ -50,8 +51,13 @@ app.use(function (req, res, next) {
 
 // Route Middlewears
 app.use('/api/user', authRoute);
+
+// Strength
 app.use('/api/workout-instance', workoutInstance);
 app.use('/api/workout-template', workoutTemplate);
+
+// Cardio
+app.use('/api/cardio-instance', cardioInstance);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server running');

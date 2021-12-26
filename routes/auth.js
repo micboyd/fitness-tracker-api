@@ -53,8 +53,6 @@ router.post('/register', async (req, res) => {
 /* End-point: Login */
 router.post('/login', async (req, res) => {
 
-    console.log(req.body)
-
     const {error} = loginValidation(req.body);
 
     if (error) {
