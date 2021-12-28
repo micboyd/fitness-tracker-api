@@ -17,4 +17,14 @@ router.get('/get-cardio-settings/:userId', async (req, res) => {
     return res.json(allCardioSettings);
 });
 
+router.delete('/delete-cardio-setting/:workoutId', async (req, res) => { 
+    const deletedCardioInstance = await CardioSetting.deleteOne(
+        {
+            _id: req.params.workoutId
+        }
+    );
+    
+    return res.json(deletedCardioInstance);
+});
+
 module.exports = router;
