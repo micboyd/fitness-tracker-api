@@ -80,7 +80,8 @@ router.post('/login', async (req, res) => {
     res.status(200).header('auth-token', token).json({
         token : token, 
         userid: user._id,
-        username: user.name
+        username: user.name,
+        isAdmin: user.isAdmin
     });
 });
 
