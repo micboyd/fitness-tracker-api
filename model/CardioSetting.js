@@ -6,9 +6,6 @@ const cardioSettingsSchema = new mongoose.Schema({
     },
     cardioName: {
         type: String
-    },
-    associatedIconMarkup: {
-        type: String
     }
 });
 
