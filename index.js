@@ -8,6 +8,7 @@ const authRoute = require('./routes/auth');
 const workoutInstance = require('./routes/workoutInstance');
 const workoutTemplate = require('./routes/workoutTemplate');
 const cardioInstance = require('./routes/cardioInstance');
+const cardioSettings = require('./routes/cardioSettings');
 
 dotenv.config();
 
@@ -58,6 +59,7 @@ app.use('/api/workout-template', workoutTemplate);
 
 // Cardio
 app.use('/api/cardio-instance', cardioInstance);
+app.use('/api/cardio-settings', cardioSettings);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server running');
