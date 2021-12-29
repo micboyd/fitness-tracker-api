@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    const allowedOrigins = ['http://localhost:4200', 'https://mb-gym.netlify.app'];
+    const allowedOrigins = ['http://localhost:4200', 'https://mb-track-gym.netlify.app', 'https://trackgym.co.uk', 'https://www.trackgym.co.uk'];
 
     const origin = req.headers.origin;
 
