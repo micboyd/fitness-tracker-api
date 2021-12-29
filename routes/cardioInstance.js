@@ -53,4 +53,14 @@ router.get('/get-single-workout-instance/:workoutId', async (req, res) => {
     return res.json(singleCardioInstance);
 });
 
+router.get('/get-single-cardio-instance/:workoutId', async (req, res) => { 
+    const singleCardio = await CardioInstance.findOne(
+        {
+            _id: req.params.workoutId
+        }
+    );
+    
+    return res.json(singleCardio);
+});
+
 module.exports = router;
