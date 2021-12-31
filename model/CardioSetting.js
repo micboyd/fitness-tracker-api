@@ -6,7 +6,10 @@ const cardioSettingsSchema = new mongoose.Schema({
     },
     cardioName: {
         type: String
-    }
+    },
+    cardioType: {
+        type: String,
+    },
 });
 
 module.exports = mongoose.model('CardioSetting', cardioSettingsSchema);
