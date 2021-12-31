@@ -19,7 +19,7 @@ router.get('/get-cardio-settings/:userId', async (req, res) => {
 
 // Get single cardio setting
 router.get('/get-single-cardio-setting/:settingId', async (req, res) => { 
-    const singleCardioSetting = await CardioInstance.findOne(
+    const singleCardioSetting = await CardioSetting.findOne(
         {
             _id: req.params.settingId
         }
