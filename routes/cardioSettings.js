@@ -17,6 +17,17 @@ router.get('/get-cardio-settings/:userId', async (req, res) => {
     return res.json(allCardioSettings);
 });
 
+// Get single cardio setting
+router.get('/get-single-cardio-setting/:settingId', async (req, res) => { 
+    const singleCardioSetting = await CardioInstance.findOne(
+        {
+            _id: req.params.settingId
+        }
+    );
+    
+    return res.json(singleCardioSetting);
+});
+
 router.delete('/delete-cardio-setting/:workoutId', async (req, res) => { 
     const deletedCardioInstance = await CardioSetting.deleteOne(
         {
@@ -26,5 +37,7 @@ router.delete('/delete-cardio-setting/:workoutId', async (req, res) => {
     
     return res.json(deletedCardioInstance);
 });
+
+
 
 module.exports = router;
