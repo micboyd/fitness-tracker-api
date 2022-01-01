@@ -9,6 +9,7 @@ const workoutInstance = require('./routes/workoutInstance');
 const workoutTemplate = require('./routes/workoutTemplate');
 const cardioInstance = require('./routes/cardioInstance');
 const cardioSettings = require('./routes/cardioSettings');
+const mealSettings = require('./routes/nutritionSettings');
 
 dotenv.config();
 
@@ -60,6 +61,9 @@ app.use('/api/workout-template', workoutTemplate);
 // Cardio
 app.use('/api/cardio-instance', cardioInstance);
 app.use('/api/cardio-settings', cardioSettings);
+
+// Nutrition
+app.use('/api/nutrition-settings', mealSettings);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server running');
