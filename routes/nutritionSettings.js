@@ -31,16 +31,16 @@ router.post('/add-meal-instance/', async (req, res) => {
 //     return res.json(deletedCardioInstance);
 // });
 
-// // Get all cardio instances
-// router.get('/get-cardio-instances/:userId', async (req, res) => { 
-//     const allCardioInstances = await CardioInstance.find(
-//         {
-//             userId: req.params.userId
-//         }
-//     );
+// Get all meal builder instances
+router.get('/get-meal-builder-instances/:userId', async (req, res) => { 
+    const allMealBuilderInstances = await MealInstance.find(
+        {
+            userId: req.params.userId
+        }
+    );
     
-//     return res.json(allCardioInstances);
-// });
+    return res.json(allMealBuilderInstances);
+});
 
 // router.get('/get-single-workout-instance/:workoutId', async (req, res) => { 
 //     const singleCardioInstance = await CardioInstance.findOne(
