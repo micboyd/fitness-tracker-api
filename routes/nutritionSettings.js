@@ -20,16 +20,16 @@ router.post('/add-meal-instance/', async (req, res) => {
 //     return res.json(updatedCardioInstance);
 // });
 
-// // Delete an instance of a workout
-// router.delete('/delete-cardio-instance/:workoutId', async (req, res) => { 
-//     const deletedCardioInstance = await CardioInstance.deleteOne(
-//         {
-//             _id: req.params.workoutId
-//         }
-//     );
+// Delete an instance of a workout
+router.delete('/delete-meal-builder-instance/:mealId', async (req, res) => { 
+    const deletedMealInstance = await CardioInstance.deleteOne(
+        {
+            _id: req.params.mealId
+        }
+    );
     
-//     return res.json(deletedCardioInstance);
-// });
+    return res.json(deletedMealInstance);
+});
 
 // Get all meal builder instances
 router.get('/get-meal-builder-instances/:userId', async (req, res) => { 
