@@ -22,7 +22,7 @@ router.post('/add-meal-instance/', async (req, res) => {
 
 // Delete an instance of a workout
 router.delete('/delete-meal-builder-instance/:mealId', async (req, res) => { 
-    const deletedMealInstance = await CardioInstance.deleteOne(
+    const deletedMealInstance = await MealInstance.deleteOne(
         {
             _id: req.params.mealId
         }
