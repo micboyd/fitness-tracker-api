@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mealInstanceSchema = new mongoose.Schema({
+const nutritionInstanceSchema = new mongoose.Schema({
     userId: {
         type: String
     },
@@ -25,24 +25,7 @@ const mealInstanceSchema = new mongoose.Schema({
     },
     totalCarbs: {
         type: Number
-    },
-    Ingredients: [
-        {
-            ingredientName: {
-                type: String
-            },
-            calories: {
-                type: String
-            },
-            protein: {
-                type: Number
-            },
-            carbs: {
-                type: Number
-            },
-
-        }
-    ]
+    }
 });
 
-module.exports = mongoose.model('MealInstance', mealInstanceSchema);
+module.exports = mongoose.model('NutritionInstance', nutritionInstanceSchema);
