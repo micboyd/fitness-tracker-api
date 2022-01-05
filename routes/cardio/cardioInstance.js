@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const CardioInstance = require('../model/CardioInstance');
+const CardioInstance = require('../../model/cardio/CardioInstance');
 
 
 // Add an instance of a workout

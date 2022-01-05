@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const CardioSetting = require('../model/CardioSetting');
+const CardioSetting = require('../../model/cardio/CardioSetting');
 
 // Get all cardio settings
 router.post('/add-cardio-settings/', async (req, res) => { 

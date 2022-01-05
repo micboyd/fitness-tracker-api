@@ -3,13 +3,16 @@ const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
-// Import routes
-const authRoute = require('./routes/auth');
-const workoutInstance = require('./routes/workoutInstance');
-const workoutTemplate = require('./routes/workoutTemplate');
-const cardioInstance = require('./routes/cardioInstance');
-const cardioSettings = require('./routes/cardioSettings');
-const mealSettings = require('./routes/nutritionSettings');
+// Users
+const authRoute = require('./routes/users/auth');
+
+// Strength
+const workoutInstance = require('./routes/strength/workoutInstance');
+const workoutTemplate = require('./routes/strength/workoutTemplate');
+
+// Cardio
+const cardioInstance = require('./routes/cardio/cardioInstance');
+const cardioSettings = require('./routes/cardio/cardioSettings');
 
 dotenv.config();
 
@@ -61,9 +64,6 @@ app.use('/api/workout-template', workoutTemplate);
 // Cardio
 app.use('/api/cardio-instance', cardioInstance);
 app.use('/api/cardio-settings', cardioSettings);
-
-// Nutrition
-app.use('/api/nutrition-settings', mealSettings);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server running');

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const WorkoutInstance = require('../model/WorkoutInstance');
+const WorkoutInstance = require('../../model/strength/WorkoutInstance');
 const fns = require('date-fns');
 
 // Add an instance of a workout

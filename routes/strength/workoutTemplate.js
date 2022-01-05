@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const WorkoutTemplate = require('../model/WorkoutTemplate');
+const WorkoutTemplate = require('../../model/strength/WorkoutTemplate');
 
 // Add an instance of a workout
 router.post('/add-workout-template/', async (req, res) => { 

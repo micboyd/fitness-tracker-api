@@ -3,10 +3,10 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 // User model
-const User = require('../model/User');
+const User = require('../../model/users/UserInstance');
 
 // Validation
-const { registerValidation, loginValidation } = require('../validation');
+const { registerValidation, loginValidation } = require('../../validation');
 
 /* End-point: Register */
 router.post('/register', async (req, res) => {
