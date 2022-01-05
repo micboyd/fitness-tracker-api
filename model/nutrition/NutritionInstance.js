@@ -8,8 +8,11 @@ const mealInstanceSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    mealName: {
+    itemName: {
         type: String
+    },
+    isMeal: {
+        type: Boolean
     },
     totalCalories: {
         type: Number
