@@ -8,48 +8,6 @@ const User = require('../../model/users/UserInstance');
 // Validation
 const { registerValidation, loginValidation } = require('../../validation');
 
-/* End-point: Register */
-router.post('/register', async (req, res) => {
-
-    // Validate the user
-    const {error} = registerValidation(req.body);
-
-    if (error) {
-        return res.status(400).send(error.details[0].message);
-    }
-
-    // Check if user already exists
-    const emailExists = await User.findOne({
-        email: req.body.email
-    })
-
-    if (emailExists) {
-        return res.status(400).send('Email already exists');
-    }
-
-    // Hash the password
-    const salt = await bcrypt.genSalt(10);
-    const hashPassword = await bcrypt.hash(req.body.password, salt); 
-
-    // Create a new user
-    const user = new User({
-        firstname: req.body.firstname,
-        surname: req.body.surname,
-        isAdmin: req.body.isAdmin,
-        email: req.body.email,
-        password: hashPassword
-    });
-
-    try {
-        const savedUser = await user.save();
-        res.send({
-            user: user._id
-        });
-    } catch (err) {
-        res.status(400).send(err);
-    }
-});
-
 /* End-point: Login */
 router.post('/login', async (req, res) => {
 
@@ -85,6 +43,46 @@ router.post('/login', async (req, res) => {
     });
 });
 
+router.post('/register', async (req, res) => {
+
+    const {error} = registerValidation(req.body);
+
+    if (error) {
+        return res.status(400).send(error.details[0].message);
+    }
+
+    // Check if user already exists
+    const emailExists = await User.findOne({
+        email: req.body.email
+    })
+
+    if (emailExists) {
+        return res.status(400).send('Email already exists');
+    }
+
+    // Hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(req.body.password, salt); 
+
+    // Create a new user
+    const user = new User({
+        firstname: req.body.firstname,
+        surname: req.body.surname,
+        isAdmin: req.body.isAdmin,
+        email: req.body.email,
+        password: hashPassword
+    });
+
+    try {
+        const savedUser = await user.save();
+        res.send({
+            user: user._i
+        });
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+
 router.get('/details/:userId', async (req, res) => {
 
     let user = await User.findOne({_id: req.params.userId});
@@ -95,6 +93,30 @@ router.get('/details/:userId', async (req, res) => {
         isAdmin: user.isAdmin,
         email: user.email
     });
+});
+
+router.put('/update-user/:userId', async (req, res) => {
+
+    const updatedUser = await User.updateOne(
+        { _id: req.params.userId }, req.body  
+    );
+    
+    return res.json(updatedUser);
+});
+
+router.delete('/delete-user/:userId', async (req, res) => {    
+
+    const deletedUser = await User.deleteOne(
+        { _id: req.params.userId }
+    );
+
+    return res.json(deletedUser);
+});
+
+router.get('/all-users', async (req, res) => {
+    let allUsers = await User.find();
+
+    return res.json(allUsers);
 });
 
 module.exports = router;
