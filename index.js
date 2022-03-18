@@ -6,17 +6,6 @@ const mongoose = require('mongoose');
 // Users
 const authRoute = require('./routes/users/auth');
 
-// Strength
-const workoutInstance = require('./routes/strength/workoutInstance');
-const workoutTemplate = require('./routes/strength/workoutTemplate');
-
-// Cardio
-const cardioInstance = require('./routes/cardio/cardioInstance');
-const cardioSettings = require('./routes/cardio/cardioSettings');
-
-// Nutrition
-const nutritionInstance = require('./routes/nutrition/nutritionInstance');
-
 dotenv.config();
 
 // Connect to DB
@@ -58,18 +47,7 @@ app.use(function (req, res, next) {
 });
 
 // Route Middlewears
-app.use('/api/user', authRoute);
-
-// Strength
-app.use('/api/workout-instance', workoutInstance);
-app.use('/api/workout-template', workoutTemplate);
-
-// Cardio
-app.use('/api/cardio-instance', cardioInstance);
-app.use('/api/cardio-settings', cardioSettings);
-
-// Nutrition
-app.use('/api/nutrition-instance', nutritionInstance);
+app.use('/api/users', authRoute);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server running');
