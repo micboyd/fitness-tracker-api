@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 // Users
 const authRoute = require('./routes/users/auth');
+const mealsRoute = require('./routes/nutrition/meals');
 
 dotenv.config();
 
@@ -48,6 +49,7 @@ app.use(function (req, res, next) {
 
 // Route Middlewears
 app.use('/api/users', authRoute);
+app.use('/api/meals', mealsRoute);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server running');
