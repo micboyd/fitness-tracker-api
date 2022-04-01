@@ -10,7 +10,7 @@ const totalCounter = (array, property) => {
 // Add a meal
 router.post('/add-meal', async (req, res) => {
 
-     const ingredientsArray = req.body.ingredients;
+    const ingredientsArray = req.body.ingredients;
 
     const totalCalories = totalCounter(ingredientsArray, 'calories');
     const totalFat = totalCounter(ingredientsArray, 'fat');
@@ -65,9 +65,15 @@ router.delete('/delete-meal/:mealId', async (req, res) => {
 });
 
 router.get('/all-meals/:userId', async (req, res) => {
-    let allMeals = await Meal.find({ userId: req.params.userId });
+    const allMeals = await Meal.find({ userId: req.params.userId });
 
     res.status(200).json(allMeals);
+});
+
+router.get('/single-meal/:mealId', async (req, res) => {
+    const singleMeal = await Meal.find({ _id: req.params.mealId });
+
+    res.status(200).json(singleMeal);
 });
 
 module.exports = router;
