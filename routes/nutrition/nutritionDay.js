@@ -36,7 +36,6 @@ router.get('/all-nutrition-days/:userId', async (req, res) => {
     res.status(200).json(allNutritonDays);
 });
 
-
 router.get('/single-nutrition-day/:nutritionDayId', async (req, res) => {
 
     const singleNutritionDay = await NutritionDay.find({ _id: req.params.nutritionDayId });

@@ -34,12 +34,12 @@ router.put('/update-meal/:mealId', async (req, res) => {
 
     const ingredientsArray = req.body.ingredients;
 
-   const totalCalories = totalCounter(ingredientsArray, 'calories');
-   const totalFat = totalCounter(ingredientsArray, 'fat');
-   const totalProtein = totalCounter(ingredientsArray, 'protein');
-   const totalCarbs = totalCounter(ingredientsArray, 'carbs');
+    const totalCalories = totalCounter(ingredientsArray, 'calories');
+    const totalFat = totalCounter(ingredientsArray, 'fat');
+    const totalProtein = totalCounter(ingredientsArray, 'protein');
+    const totalCarbs = totalCounter(ingredientsArray, 'carbs');
 
-   const updatedMeal = await Meal.updateOne(
+    const updatedMeal = await Meal.updateOne(
         { _id: req.params.mealId },
         {
             userId: req.body.userId,
@@ -55,7 +55,7 @@ router.put('/update-meal/:mealId', async (req, res) => {
     res.status(200).json(updatedMeal);
 });
 
-router.delete('/delete-meal/:mealId', async (req, res) => {    
+router.delete('/delete-meal/:mealId', async (req, res) => { 
 
     const deletedMeal = await Meal.deleteOne(
         { _id: req.params.mealId }

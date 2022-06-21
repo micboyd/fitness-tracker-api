@@ -31,14 +31,18 @@ router.delete('/delete-snack/:snackId', async (req, res) => {
 
 router.get('/all-snacks/:userId', async (req, res) => {
 
-    const allSnacks = await Snack.find({ userId: req.params.userId });
+    const allSnacks = await Snack.find(
+        { userId: req.params.userId }
+    );
 
     res.status(200).json(allSnacks);
 });
 
 router.get('/single-snack/:snackId', async (req, res) => {
     
-    const singleSnack = await Snack.find({ _id: req.params.snackId });
+    const singleSnack = await Snack.find(
+        { _id: req.params.snackId }
+    );
 
     res.status(200).json(singleSnack);
 });

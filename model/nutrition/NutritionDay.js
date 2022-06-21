@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const nutritionDaySchema = new mongoose.Schema({
+    userId: {
+        type: String
+    },
     date: {
         type: Date,
         default: Date.now
@@ -26,6 +29,25 @@ const nutritionDaySchema = new mongoose.Schema({
                 type: String
             },
             category: {
+                type: String
+            },
+            totalCalories: {
+                type: Number
+            },
+            totalFat: {
+                type: Number
+            },
+            totalProtein: {
+                type: Number
+            },
+            totalCarbs: {
+                type: Number
+            },
+        }
+    ],
+    snacks: [
+        {
+            name: {
                 type: String
             },
             totalCalories: {
