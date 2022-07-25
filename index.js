@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
 // Users
@@ -9,16 +8,24 @@ const mealsRoute = require('./routes/nutrition/meals');
 const snacksRoute = require('./routes/nutrition/snacks');
 const nutritionDayRoute = require('./routes/nutrition/nutritionDay');
 
-dotenv.config();
+require("dotenv").config();
 
-// Connect to DB
-mongoose.connect(process.env.DB_CONNECT,
-    { 
-        useUnifiedTopology: true, 
-        useNewUrlParser: true 
-    }, () => {
-        console.log('Connected to DB');
+const uri = process.env.DB_CONNECT;
+
+mongoose.connect(uri, {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+}).then(x => {
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
+}).catch(err => {
+    console.error("Error connecting to mongo", err);
 });
+
+
 
 // Json Parser
 app.use(express.json());
