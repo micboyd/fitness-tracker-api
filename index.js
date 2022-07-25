@@ -25,8 +25,6 @@ mongoose.connect(uri, {
     console.error("Error connecting to mongo", err);
 });
 
-
-
 // Json Parser
 app.use(express.json());
 
